@@ -55,6 +55,7 @@ The project demonstrates:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/student-grading-system.git
-   cd student-grading-system
+   git clone https://github.com/rabeehahmedkp/student_grading.git
+   cd student_grading
+   python3 initialize.py
 
