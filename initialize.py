@@ -93,7 +93,11 @@ def menu():
 
         if choice == "1":
             name = input("Enter name: ")
-            age = int(input("Enter age: "))
+            try:
+                age = int(input("Enter age: "))
+            except ValueError:
+                print("❌ Invalid input! Age must be a number.")
+                continue
             student_class = input("Enter class: ")
             add_student(name, age, student_class)
             print("✅ Student added successfully!")
@@ -101,33 +105,53 @@ def menu():
         elif choice == "2":
             students = view_students()
             print("\n--- Student List ---")
+            if not students:
+                print("No students found.")
             for s in students:
                 print(s)
 
         elif choice == "3":
-            sid = int(input("Enter Student ID to update: "))
+            try:
+                sid = int(input("Enter Student ID to update: "))
+                age = int(input("Enter new age: "))
+            except ValueError:
+                print("❌ Invalid input! IDs and ages must be numbers.")
+                continue
             name = input("Enter new name: ")
-            age = int(input("Enter new age: "))
             student_class = input("Enter new class: ")
             update_student(sid, name, age, student_class)
             print("✅ Student updated successfully!")
 
         elif choice == "4":
-            sid = int(input("Enter Student ID to delete: "))
+            try:
+                sid = int(input("Enter Student ID to delete: "))
+            except ValueError:
+                print("❌ Invalid input! Student ID must be a number.")
+                continue
             delete_student(sid)
             print("✅ Student deleted successfully!")
 
         elif choice == "5":
-            sid = int(input("Enter Student ID to add grade: "))
+            try:
+                sid = int(input("Enter Student ID to add grade: "))
+                marks = int(input("Enter marks: "))
+            except ValueError:
+                print("❌ Invalid input! Student ID and marks must be numbers.")
+                continue
             subject = input("Enter subject: ")
-            marks = int(input("Enter marks: "))
             add_grade(sid, subject, marks)
             print("✅ Grade added successfully!")
 
         elif choice == "6":
-            sid = int(input("Enter Student ID to view grades: "))
+            try:
+                sid = int(input("Enter Student ID to view grades: "))
+            except ValueError:
+                print("❌ Invalid input! Student ID must be a number.")
+                continue
             grades = view_grades(sid)
             print(f"\n--- Grades for Student {sid} ---")
+            if not grades:
+                print("No grades found for this student.")
             for g in grades:
                 print(g)
 
